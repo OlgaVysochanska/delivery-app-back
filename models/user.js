@@ -2,29 +2,32 @@ const { Schema, model } = require("mongoose");
 
 const { handleMongooseError } = require("../utils");
 
-const goodsSchema = new Schema(
+const userSchema = new Schema(
   {
-    title: {
+    email: {
+      type: String,
+      required: [true, "Email is required"],
+      unique: true,
+    },
+    name: {
       type: String,
     },
-    url: {
+    phone: {
       type: String,
     },
-    price: {
+    address: {
       type: String,
     },
-    shop: {
+    token: {
       type: String,
-    },
-    owner: {
-      type: String,
+      default: null,
     },
   },
   { versionKey: false, timestamps: true }
 );
 
-goodsSchema.post("save", handleMongooseError);
+userSchema.post("save", handleMongooseError);
 
-const Good = model("goods", goodsSchema);
+const User = model("user", userSchema);
 
-module.exports = Good;
+module.exports = User;
