@@ -2,7 +2,7 @@ const { HttpError } = require("../../helpers");
 const { Order } = require("../../models");
 
 const getOrders = async (req, res) => {
-  const { email } = req.params;
+  const { email } = req.query;
 
   const data = await Order.find({ owner: email });
 
@@ -10,7 +10,7 @@ const getOrders = async (req, res) => {
     throw HttpError(404, "Make your first order!");
   }
 
-  res.status(200).json({ data });
+  res.status(200).json(data);
 };
 
 module.exports = { getOrders };
