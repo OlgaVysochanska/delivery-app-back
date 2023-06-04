@@ -10,7 +10,7 @@ const getOrders = async (req, res) => {
     throw HttpError(404, "Make your first order!");
   }
 
-  res.status(200).json(data);
+  res.status(200).json({ data });
 };
 
 module.exports = { getOrders };
