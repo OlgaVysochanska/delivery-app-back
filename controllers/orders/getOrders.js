@@ -2,7 +2,7 @@ const { HttpError } = require("../../helpers");
 const { Order } = require("../../models");
 
 const getOrders = async (req, res) => {
-  const { email } = req.body;
+  const { email } = req.params;
 
   const data = await Order.find({ owner: email });
 
