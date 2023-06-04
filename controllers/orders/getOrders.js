@@ -7,7 +7,7 @@ const getOrders = async (req, res) => {
   const data = await Order.find({ owner: email });
 
   if (!data) {
-    throw HttpError(404, "Your not have order");
+    throw HttpError(404, "Make your first order!");
   }
 
   res.status(200).json(data);
